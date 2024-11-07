@@ -1,38 +1,38 @@
-// TaskCreator.tsx
 import { useState } from "react";
-import { TaskCreatorProps } from '../interfaces/interfaces';
 
-export const TaskCreator: React.FC<TaskCreatorProps> = ({ createTask, tasks, setTasks }) => {
+export const TaskCreator = ({ createTask }: { createTask: (task: string) => void }) => {
 
-  const [addTask, setAddTask] = useState<string>("");
-
-  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAddTask(event.target.value);
+  const [addTask, setAddTask] = useState<string>("")
+  
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement> ) => {
+    
+      setAddTask(event.target.value)
+   
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement> )=> {
     event.preventDefault();
-    if (addTask === "") {
-      alert("Por favor, inserta una tarea.");
+    if (addTask.trim() === "") {
+      alert("Por favor, ingrese una tarea.");
       return; 
     }
-    createTask(addTask, tasks, setTasks); 
+    createTask(addTask);
     setAddTask("");
   };
   
+
   return (
     <>
-      <h1>To-Do List</h1>
+      <h1> To-Do List</h1>
       <form onSubmit={handleSubmit} className="input-task">
           <input
-            type="text"
-            placeholder="Inserta una tarea"
+            type='text'
+            placeholder='Inserta tarea aquí'
             value={addTask}
             onChange={handleInput}
-            className="input"
-          />
+            className="input"/>
           <button className="btn">Insertar tarea</button>
       </form>
     </>
-  );
-};
+  )
+}
