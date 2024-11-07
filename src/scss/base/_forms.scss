@@ -26,6 +26,12 @@
   font-weight: 600;
   color: v.$colorFont;
   cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-7px);
+    box-shadow: v.$primary 0px 7px;
+  }
 }
 
 .btn--delete {
@@ -36,6 +42,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
+
 
   @media (max-width: v.$tablet) {
     width: 100%;
