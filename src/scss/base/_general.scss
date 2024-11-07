@@ -1,0 +1,19 @@
+@use "./variables" as v;
+
+body {
+  background-color: v.$bg;
+  max-width: 950px;
+  margin: 0px auto;
+  font-family: v.$principalFont;
+  color: v.$colorFont;
+}
+
+h1 {
+  font-size: 60px;
+  line-height: 0px;
+}
+
+h2 {
+  font-size: 32px;
+  line-height: 0px;
+}

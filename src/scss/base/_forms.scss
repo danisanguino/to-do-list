@@ -1,0 +1,41 @@
+@use "../base/variables" as v;
+
+.input-task {
+  display: flex;
+  gap: 15px;
+}
+
+.input {
+  width: 80%;
+  border: none;
+  border-bottom: 2px solid v.$colorFont;
+  color: v.$colorFont ;
+  font-size: 22px;
+  box-sizing: border-box;
+  font-family: v.$secondartFont;
+  padding-top: 10px;
+}
+
+.btn {
+  width: 20%;
+  height: 40px;
+  background-color: v.$insertBtn;
+  border: none;
+  border-radius:5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: v.$colorFont;
+  cursor: pointer;
+}
+
+.btn--delete {
+  width: calc(100% - 30px);
+  margin: 15px;
+  background-color: v.$deleteBtn;
+  color: v.$secondary;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+
