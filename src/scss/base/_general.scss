@@ -11,6 +11,10 @@ body {
 h1 {
   font-size: 60px;
   line-height: 0px;
+
+  @media  ( max-width: v.$tablet) {
+    font-size: 40px;
+  }
 }
 
 h2 {
