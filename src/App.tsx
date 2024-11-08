@@ -1,34 +1,15 @@
 import { useEffect, useState } from 'react';
-import './app.css';
+import './css/app.css';
 import { TaskCreator } from './components/TaskCreator';
 import { TaskTable } from './components/TaskTable';
 import { DeleteControl } from './components/DeleteControl';
 import { Task } from './interfaces/interfaces';
+import { clearCompletedTasks, createTask, toggleTask } from './utils/functions';
+
 
 function App() {
 
   const [tasks, setTasks] = useState<Task[]>([]);
-
-  const createTask = (taskName: string) => {
-    if (!tasks.find((e) => e.name === taskName)) {
-      setTasks([...tasks, { name: taskName, done: false }]);
-    }
-  };
-
-  const toggleTask = (taskName: string) => {
-    setTasks(prevTasks => 
-      prevTasks.map(e => {
-        if (e.name === taskName) {
-          return { ...e, done: !e.done };
-        } 
-        return e;
-      })
-    );
-  };
-
-  const clearCompletedTasks = () => {
-    setTasks(tasks.filter(e => !e.done));
-  };
 
   useEffect(() => {
     let data = localStorage.getItem("tasks");
@@ -46,19 +27,19 @@ function App() {
   return (
     <>
       <header>
-        <TaskCreator createTask={createTask}/>
+        <TaskCreator createTask={(taskName: string) => createTask(taskName, tasks, setTasks)} />
       </header>
       
       <section>
         <div className='section__column'>
           <h2>Por hacer</h2>
-          <TaskTable tasks={tasks} toggleTask={toggleTask} showCompleted={false}/>     
+          <TaskTable tasks={tasks} toggleTask={(taskName: string) => toggleTask(taskName, setTasks)} showCompleted={false}  />     
         </div>
 
         <div className='section__column'>
           <h2>Hechas</h2>
-          <TaskTable tasks={tasks} toggleTask={toggleTask} showCompleted={true}/>
-          <DeleteControl clearCompletedTasks={clearCompletedTasks}/>
+          <TaskTable tasks={tasks} toggleTask={(taskName: string) => toggleTask(taskName, setTasks)} showCompleted={true} />
+          <DeleteControl clearCompletedTasks={() => clearCompletedTasks(tasks, setTasks)}/>
         </div>
         
       </section>

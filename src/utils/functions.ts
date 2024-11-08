@@ -10,7 +10,11 @@ export const createTask = (
   }
 };
 
-export const toggleTask = (taskName: string, setTasks: React.Dispatch<React.SetStateAction<Task[]>>) => {
+export const toggleTask = (
+  taskName: string,
+  // tasks: Task[],
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>
+) => {
   setTasks(prevTasks => 
     prevTasks.map(e => {
       if (e.name === taskName) {
@@ -21,7 +25,10 @@ export const toggleTask = (taskName: string, setTasks: React.Dispatch<React.SetS
   );
 };
 
-export const clearCompletedTasks = (tasks: Task[], setTasks: React.Dispatch<React.SetStateAction<Task[]>>) => {
+export const clearCompletedTasks = (
+  tasks: Task[],
+  setTasks: React.Dispatch<React.SetStateAction<Task[]>>
+) => {
   setTasks(tasks.filter(e => !e.done));
 };
 
