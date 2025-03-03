@@ -3,9 +3,7 @@
 .input-task {
   display: flex;
   gap: 15px;
-  &:focus{
-    outline: none;
-  }
+  outline: none;
 }
 
 .input {
